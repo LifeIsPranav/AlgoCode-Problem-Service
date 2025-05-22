@@ -2,10 +2,6 @@ const NotImplemented = require("../errors/notImplemented.error")
 
 function addProblem(req, res, next){
   try{
-    // return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    //   msg: "Not Implemented!"
-    // })
-
     throw new NotImplemented('add Problem!')
   }
   catch(error){
@@ -15,32 +11,38 @@ function addProblem(req, res, next){
 
 function getProblem(req, res){
   try{
-    throw new Error("broooo")
+    throw new NotImplemented('add Problem!')
   }
-  catch(err){
-    next()
+  catch(error){
+    next(error)
   }
-  // return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-  //   msg: "Not Implemented!"
-  // })
 }
 
 function getProblems(req, res){
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    msg: "Not Implemented!"
-  }) 
+  try{
+    throw new NotImplemented('add Problem!')
+  }
+  catch(error){
+    next(error)
+  } 
 }
 
 function deleteProblem(req, res){
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    msg: "Not Implemented!"
-  })
+  try{
+    throw new NotImplemented('add Problem!')
+  }
+  catch(error){
+    next(error)
+  }
 }
 
 function updateProblem(req, res){
-  return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    msg: "Not Implemented!"
-  })
+  try{
+    throw new NotImplemented('add Problem!')
+  }
+  catch(error){
+    next(error)
+  }
 }
 
 function pingProblemController(req, res){
