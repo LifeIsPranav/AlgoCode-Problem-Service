@@ -1,7 +1,7 @@
 const express = require('express')
 const { problemController } = require('../../controllers')
 
-// This is the Problem router: /api/v1/problem
+// This is the Problem router: /api/v1/problems
 const problemRouter = express.Router()
 
 // Now send these to their required controller.. which gives end result of these links
