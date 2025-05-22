@@ -3,6 +3,8 @@ const express = require('express')
 
 const { PORT } = require('./config/server.config')
 const apiRouter = require('./routes')
+const BaseError = require('./errors/base.error')
+const errorHandler = require('./utils/errorHandler')
 
 const app = new express()
 
@@ -20,6 +22,7 @@ app.get('/ping', (req, res) => {
 })
 
 
+app.use(errorHandler)
 app.listen(PORT, () => {
   console.log(`Server started at: ${PORT}`)
 }) 
