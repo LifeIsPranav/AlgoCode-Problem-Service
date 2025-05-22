@@ -9,7 +9,7 @@ function addProblem(req, res, next){
   }
 }
 
-function getProblem(req, res){
+function getProblem(req, res, next){
   try{
     throw new NotImplemented('add Problem!')
   }
@@ -18,7 +18,7 @@ function getProblem(req, res){
   }
 }
 
-function getProblems(req, res){
+function getProblems(req, res, next){
   try{
     throw new NotImplemented('add Problem!')
   }
@@ -27,7 +27,7 @@ function getProblems(req, res){
   } 
 }
 
-function deleteProblem(req, res){
+function deleteProblem(req, res, next){
   try{
     throw new NotImplemented('add Problem!')
   }
@@ -36,7 +36,7 @@ function deleteProblem(req, res){
   }
 }
 
-function updateProblem(req, res){
+function updateProblem(req, res, next){
   try{
     throw new NotImplemented('add Problem!')
   }
@@ -45,7 +45,7 @@ function updateProblem(req, res){
   }
 }
 
-function pingProblemController(req, res){
+function pingProblemController(req, res, next){
   res.json({
     msg: "Successfully reached Problem Controller"
   })
