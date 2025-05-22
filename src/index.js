@@ -1,12 +1,17 @@
 const bodyParser = require('body-parser')
 const express = require('express')
+
 const { PORT } = require('./config/server.config')
+const apiRouter = require('./routes')
 
 const app = new express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.text())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+
+app.use('/api', apiRouter)
 
 app.get('/ping', (req, res) => {
   res.json({
