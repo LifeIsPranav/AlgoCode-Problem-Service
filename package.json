@@ -1,0 +1,12 @@
+{
+  "name": "algocode-problem-service",
+  "version": "1.0.0",
+  "description": "This ia an Admin Service to manage Problems (Questions) of the algo code Platform",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
