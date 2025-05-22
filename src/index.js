@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.text())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
+// If any request comes which starts with /api, we map it to api Router
 app.use('/api', apiRouter)
 
 app.get('/ping', (req, res) => {
@@ -18,6 +18,7 @@ app.get('/ping', (req, res) => {
     msg: "Problem Service is Alive"
   })
 })
+
 
 app.listen(PORT, () => {
   console.log(`Server started at: ${PORT}`)
