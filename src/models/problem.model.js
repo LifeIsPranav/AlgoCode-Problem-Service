@@ -33,7 +33,7 @@ const problemSchema = new mongoose.Schema({
 
   editorial: {    // Editorial
     type: String,
-    required: true
+    // required: true
   }
 })
 

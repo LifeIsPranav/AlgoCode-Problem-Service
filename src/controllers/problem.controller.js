@@ -1,8 +1,19 @@
+const { StatusCodes } = require("http-status-codes");
 const NotImplemented = require("../errors/notImplemented.error")
+const { ProblemRepository } = require("../repositories")
+const { ProblemService } = require("../services")
 
-function addProblem(req, res, next){
+const problemService = new ProblemService(new ProblemRepository())
+
+async function addProblem(req, res, next){
   try{
-    throw new NotImplemented('add Problem!')
+    const newProblem = await problemService.createProblem(req.body);
+    return res.status(StatusCodes.CREATED).json({
+      success: true,
+      message: "Successfully created a new Problem!",
+      error: {},
+      data: newProblem
+    })
   }
   catch(error){
     next(error)
