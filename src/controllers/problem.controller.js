@@ -29,13 +29,19 @@ function getProblem(req, res){
   }
 }
 
-function getProblems(req, res){
+async function getProblems(req, res){
   try{
-    throw new NotImplemented('add Problem!')
+    const response = await problemService.getAllProblems();
+    return  res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully fetched all Problems!",
+      error: {},
+      data: response
+    })
   }
   catch(error){
     next(error)
-  } 
+  }
 }
 
 function deleteProblem(req, res){
