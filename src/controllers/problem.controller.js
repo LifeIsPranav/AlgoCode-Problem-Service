@@ -20,16 +20,22 @@ async function addProblem(req, res, next){
   }
 }
 
-function getProblem(req, res){
+async function getProblem(req, res, next){
   try{
-    throw new NotImplemented('add Problem!')
+    const problem = await problemService.getProblem(req.params.id)
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      error: {},
+      message: 'Success fetching the Problem',
+      data: problem
+    })
   }
   catch(error){
     next(error)
   }
 }
 
-async function getProblems(req, res){
+async function getProblems(req, res, next){
   try{
     const response = await problemService.getAllProblems();
     return  res.status(StatusCodes.OK).json({
@@ -44,7 +50,17 @@ async function getProblems(req, res){
   }
 }
 
-function deleteProblem(req, res){
+function deleteProblem(req, res, next){
+  try{
+    throw new NotImplemented('add Problem!')
+  }
+  catch(error){
+    // console.log(error)
+    next(error)
+  }
+}
+
+function updateProblem(req, res, next){
   try{
     throw new NotImplemented('add Problem!')
   }
@@ -53,16 +69,7 @@ function deleteProblem(req, res){
   }
 }
 
-function updateProblem(req, res){
-  try{
-    throw new NotImplemented('add Problem!')
-  }
-  catch(error){
-    next(error)
-  }
-}
-
-function pingProblemController(req, res){
+function pingProblemController(req, res, next){
   res.json({
     msg: "Successfully reached Problem Controller"
   })
