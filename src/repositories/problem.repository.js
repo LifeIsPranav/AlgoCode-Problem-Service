@@ -1,4 +1,6 @@
+const InternalServerError = require("../errors/internalServer.error");
 const NotFound = require("../errors/notFound.error");
+const NotImplemented = require("../errors/notImplemented.error");
 const { Problem } = require("../models");
 
 class ProblemRepository {
@@ -43,6 +45,39 @@ class ProblemRepository {
     }
   }
 
+  async deleteProblem(id) {
+    try {
+      const result = await Problem.deleteOne({_id: id})
+      if(result.deletedCount == 0) throw new NotFound("Problem", id)
+      return result
+    } 
+    catch (error) {
+      throw error
+    }
+  }
+
+  async updateProblem(id, newProblemData) {
+    try {
+      const updateFields = Object.fromEntries(
+        Object.entries(newProblemData).filter(([_, value]) => value !== undefined)
+      )
+
+      var result = await Problem.updateOne({_id: id}, updateFields)
+      // console.log(result)
+      // // if(result.acknowledged == false) throw new NotImplemented("Modification")
+      // // if(result.matchedCount == 0) throw new NotFound("Problem", id)
+      // // if(result.modifiedCount == 0) throw new NotImplemented("Modification")
+
+      //! For the time being, lets return the new updated Object
+      result = await Problem.findById(id)
+
+      return result
+
+    }
+    catch (error) {
+      throw error
+    }
+  }
   
 }
 

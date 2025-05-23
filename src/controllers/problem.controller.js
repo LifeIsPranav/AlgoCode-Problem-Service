@@ -1,7 +1,8 @@
 const { StatusCodes } = require("http-status-codes");
 const NotImplemented = require("../errors/notImplemented.error")
 const { ProblemRepository } = require("../repositories")
-const { ProblemService } = require("../services")
+const { ProblemService } = require("../services");
+const NotFound = require("../errors/notFound.error");
 
 const problemService = new ProblemService(new ProblemRepository())
 
@@ -50,19 +51,40 @@ async function getProblems(req, res, next){
   }
 }
 
-function deleteProblem(req, res, next){
+async function deleteProblem(req, res, next){
   try{
-    throw new NotImplemented('add Problem!')
+    const id = req.params.id
+    const result = await problemService.deleteProblem(id)
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      error: {},
+      message: `You Successfully delted Problem with Problem id ${id}!`,
+      data: result
+    })
   }
   catch(error){
+    console.log("hi")
     // console.log(error)
     next(error)
   }
 }
 
-function updateProblem(req, res, next){
+async function updateProblem(req, res, next){
   try{
-    throw new NotImplemented('add Problem!')
+    const newProblemData = req.body
+    const id = req.params.id
+
+    const response = await problemService.updateProblem(id, newProblemData)
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: `Successfully Modified Problem with id ${id}!`,
+      error: {},
+      data: newProblemData,
+      "-------------" : "-------------",
+      response: response
+    })
   }
   catch(error){
     next(error)
