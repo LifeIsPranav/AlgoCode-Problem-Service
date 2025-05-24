@@ -64,8 +64,6 @@ async function deleteProblem(req, res, next){
     })
   }
   catch(error){
-    console.log("hi")
-    // console.log(error)
     next(error)
   }
 }

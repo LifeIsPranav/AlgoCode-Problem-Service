@@ -1,3 +1,4 @@
+const logger = require("../config/logger.config");
 const InternalServerError = require("../errors/internalServer.error");
 const NotFound = require("../errors/notFound.error");
 const NotImplemented = require("../errors/notImplemented.error");
@@ -48,7 +49,10 @@ class ProblemRepository {
   async deleteProblem(id) {
     try {
       const result = await Problem.deleteOne({_id: id})
-      if(result.deletedCount == 0) throw new NotFound("Problem", id)
+      if(result.deletedCount == 0){ 
+        logger.error(`Problem.repository: Problem with id: ${id} not found in the db`)
+        throw new NotFound("Problem", id)
+      }
       return result
     } 
     catch (error) {
